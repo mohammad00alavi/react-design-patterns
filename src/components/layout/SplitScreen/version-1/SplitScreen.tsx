@@ -1,19 +1,17 @@
-import { ComponentType } from "react";
+import { ReactNode } from "react";
 
 interface Props {
-    left: ComponentType;
-    right: ComponentType;
+    children: ReactNode[];
+    leftWeight: number;
+    rightWeight: number;
 }
 
-const SplitScreen = ({ left: Left, right: Right }: Props) => {
+const SplitScreen = ({ children, leftWeight = 1, rightWeight = 1 }: Props) => {
+    const [left, right] = children;
     return (
         <div className="flex">
-            <div className="flex-1">
-                <Left />
-            </div>
-            <div className="flex-1">
-                <Right />
-            </div>
+            <div className={`flex-${leftWeight}`}>{left}</div>
+            <div className={`flex-${rightWeight}`}>{right}</div>
         </div>
     );
 };
