@@ -1,11 +1,7 @@
-import CurrentUserLoaderDemo from "./components/container/CurrentDataLoader/Demo";
-import { UserInfo } from "./components/container/CurrentDataLoader/UserInfo";
-import { UserLoader } from "./components/container/CurrentDataLoader/CurrentDataLoader";
-
 function App() {
     return (
         <>
-            <CurrentUserLoaderDemo />
+            <p>Test the demo components here</p>
         </>
     );
 }
