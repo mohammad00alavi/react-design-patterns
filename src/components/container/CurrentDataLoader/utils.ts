@@ -1,7 +1,7 @@
 export const user = {
-    name: "John Doe",
-    age: 54,
-    hobbies: ["swimming", "bicycling", "video games"],
+    name: "David Alonso",
+    age: 22,
+    hobbies: ["riding", "guitar", "gym"],
 };
 
 export interface User {

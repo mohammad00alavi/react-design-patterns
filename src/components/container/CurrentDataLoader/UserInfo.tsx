@@ -10,8 +10,8 @@ const UserInfo: React.FC<User> = (props = {}) => {
             <p>Age: {age} years</p>
             <h3>Hobbies:</h3>
             <ul>
-                {hobbies?.map((hobby) => (
-                    <li key={hobby}>{hobby}</li>
+                {hobbies?.map((item) => (
+                    <li key={item}>{item}</li>
                 ))}
             </ul>
         </>
