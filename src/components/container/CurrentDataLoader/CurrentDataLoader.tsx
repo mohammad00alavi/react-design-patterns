@@ -1,12 +1,11 @@
 import React from "react";
 import { User, user } from "./utils";
 
-interface UserLoaderProps {
+interface CurrentDataLoaderProps {
     children: React.ReactNode;
 }
-// This component may use the logic to get the user data from API and pass it through its childs.
-// But here I stick with the mock data.
-const CurrentUserLoader = ({ children }: UserLoaderProps) => {
+
+const CurrentDataLoader = ({ children }: CurrentDataLoaderProps) => {
     const userData: User = user;
     return (
         <>
@@ -21,4 +20,4 @@ const CurrentUserLoader = ({ children }: UserLoaderProps) => {
     );
 };
 
-export default CurrentUserLoader;
+export default CurrentDataLoader;
