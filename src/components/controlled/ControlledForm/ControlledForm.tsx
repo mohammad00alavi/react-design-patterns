@@ -27,8 +27,13 @@ const ControlledForm = () => {
     return (
         <>
             {error && <p>{error}</p>}
-            <form onSubmit={onSubmitHandler} className="flex gap-1">
+            <form
+                onSubmit={onSubmitHandler}
+                className="flex gap-1 items-center"
+            >
+                <label htmlFor="firstName">First Name:</label>
                 <input
+                    id="firstName"
                     type="text"
                     name="firstName"
                     placeholder="First name"
@@ -37,7 +42,9 @@ const ControlledForm = () => {
                     className="border"
                     required
                 />
+                <label htmlFor="lastName">Last Name:</label>
                 <input
+                    id="lastName"
                     type="text"
                     name="lastName"
                     placeholder="Last name"
@@ -46,7 +53,9 @@ const ControlledForm = () => {
                     className="border"
                     required
                 />
+                <label htmlFor="experience">Years of Experience:</label>
                 <input
+                    id="experience"
                     type="number"
                     name="yearsOfExperience"
                     placeholder="Years of experience"
