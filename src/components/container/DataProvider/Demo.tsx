@@ -8,7 +8,7 @@ const getLocalStorageData = (key: string) => () => {
     return localStorage.getItem(key) || "No data found";
 };
 
-const Heading = ({ heading }: Props) => <h1>{heading}</h1>;
+export const Heading = ({ heading }: Props) => <h1>{heading}</h1>;
 
 const DataProviderDemo = () => {
     return (
