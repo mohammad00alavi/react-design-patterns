@@ -1,4 +1,4 @@
-import { screen, render, act } from "@testing-library/react";
+import { screen, render, act, waitFor } from "@testing-library/react";
 import { describe, test } from "@jest/globals";
 import "@testing-library/jest-dom";
 import DataProvider from "./DataProvider";
@@ -34,22 +34,24 @@ Object.defineProperty(window, "localStorage", {
 // TODO - fix the problem with this test
 describe("<DataProvider />", () => {
     test("test DataProvider component", async () => {
+        await waitFor(() => {
+            localStorageMock.setItem("hello", "hello");
+        });
         await act(async () => {
             render(
                 <DataProvider getDataFunc={() => "hello"} dataKey="hello">
                     <Heading />
                 </DataProvider>
             );
-            localStorageMock.setItem("hello", "hello");
         });
-        await act(async () => {
-          const heading = screen.getByRole("heading");
-          expect(heading).toHaveTextContent("hello");
-      });
+        await waitFor(() => {
+            screen.getByRole("heading");
+        });
+        screen.debug();
+        const heading = screen.getByRole("heading");
+        expect(heading).toHaveTextContent("hello");
     });
-});
 
-describe("<DataProvider />", () => {
     test("test DataProvider component when there is no data in local storage", async () => {
         await act(async () => {
             render(<DataProviderDemo />);
