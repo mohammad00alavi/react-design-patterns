@@ -25,8 +25,10 @@ const Part = ({ handleNext, title, placeHolder, name, type }: PartProps) => {
     };
 
     return (
-        <div className="flex gap-2 bg-blue-100 p-10 rounded">
+        <div className="flex gap-2 bg-blue-100 p-10 rounded items-center">
+            <label htmlFor={name}>{placeHolder}:</label>
             <input
+                id={name}
                 type={type}
                 name={name}
                 ref={currentRef}
