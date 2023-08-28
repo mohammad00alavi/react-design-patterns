@@ -7,6 +7,7 @@ import ControlledForm from "./ControlledForm";
 describe("<ControlledForm />", () => {
     test("should handle inputs and show the success message", async () => {
         render(<ControlledForm />);
+        // checking first name
         const firstNameMessage = screen.getByText(
             /please fill your first name/i
         );
@@ -20,6 +21,7 @@ describe("<ControlledForm />", () => {
         await waitFor(() => {
             expect(firstName).toHaveValue("Luis");
         });
+        // checking last name
         await waitFor(() => {
             screen.getByText(/please fill your last name/i);
         });
@@ -32,7 +34,7 @@ describe("<ControlledForm />", () => {
         await waitFor(() => {
             expect(lastName).toHaveValue("Andres");
         });
-        // test age
+        // checking age
         await waitFor(() => {
             screen.getByText(/please fill your age/i);
         });
@@ -45,7 +47,23 @@ describe("<ControlledForm />", () => {
         await waitFor(() => {
             expect(age).toHaveValue(5);
         });
-        screen.debug();
-        // TODO - check the final message
+        // click event
+        userEvent.click(
+            screen.getByRole("button", {
+                name: /send/i,
+            })
+        );
+        // checking message
+        await waitFor(() => {
+            screen.getByText(
+                /you are luis andres with 5 years of experience\./i
+            );
+        });
+        const message = screen.getByText(
+            /you are luis andres with 5 years of experience\./i
+        );
+        expect(message).toHaveTextContent(
+            "You are Luis Andres with 5 years of experience"
+        );
     });
 });

@@ -3,12 +3,13 @@ import { describe, test } from "@jest/globals";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import ControlledDataProviderDemo from "./Demo";
-// TODO - add comments and put the tests to separated files
+
 describe("<ControlledDataProviderDemo />", () => {
     beforeEach(() => {
         render(<ControlledDataProviderDemo />);
     });
     test("should handle inputs and valid age", async () => {
+        // checking first name
         const firstName = screen.getByRole("textbox", {
             name: /First name/i,
         });
@@ -21,6 +22,7 @@ describe("<ControlledDataProviderDemo />", () => {
                 name: /next/i,
             })
         );
+        // checking last name
         await waitFor(() =>
             screen.getByRole("textbox", {
                 name: /Last name/i,
@@ -38,6 +40,7 @@ describe("<ControlledDataProviderDemo />", () => {
                 name: /next/i,
             })
         );
+        // checking age
         await waitFor(() =>
             screen.getByRole("spinbutton", {
                 name: /age in digits:/i,
@@ -55,7 +58,7 @@ describe("<ControlledDataProviderDemo />", () => {
                 name: /next/i,
             })
         );
-
+        // checking the results
         await waitFor(() => {
             screen.getByRole("heading", {
                 name: /first name: luis/i,
@@ -83,6 +86,7 @@ describe("<ControlledDataProviderDemo />", () => {
     });
 
     test("should handle underage scenario and also reset the component", async () => {
+        // checking first name
         const firstName = screen.getByRole("textbox", {
             name: /First name/i,
         });
@@ -95,6 +99,7 @@ describe("<ControlledDataProviderDemo />", () => {
                 name: /next/i,
             })
         );
+        // checking last name
         await waitFor(() =>
             screen.getByRole("textbox", {
                 name: /Last name/i,
@@ -112,6 +117,7 @@ describe("<ControlledDataProviderDemo />", () => {
                 name: /next/i,
             })
         );
+        // checking age
         await waitFor(() =>
             screen.getByRole("spinbutton", {
                 name: /age in digits:/i,
@@ -129,7 +135,7 @@ describe("<ControlledDataProviderDemo />", () => {
                 name: /next/i,
             })
         );
-
+        // checking message
         await waitFor(() => {
             screen.getByText(
                 /you are not allowed to use our service, because you are under 18\./i
@@ -141,6 +147,7 @@ describe("<ControlledDataProviderDemo />", () => {
         expect(message).toHaveTextContent(
             "You are not allowed to use our service, because you are under 18."
         );
+        // checking reset functionality
         userEvent.click(
             screen.getByRole("button", {
                 name: /reset/i,

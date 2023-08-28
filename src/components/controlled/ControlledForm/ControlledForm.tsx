@@ -21,7 +21,7 @@ const ControlledForm = () => {
 
     const onSubmitHandler = (e: FormEvent) => {
         e.preventDefault();
-        setMessage(`You are ${firstName} ${lastName} with ${age} years old.`);
+        setMessage(`You are ${firstName} ${lastName} with ${age} years of experience.`);
     };
 
     return (
